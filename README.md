@@ -8,7 +8,7 @@ Instalación
 
 Crear carpeta en `/var/log` llamada `userbot`.
 
-# mkdir /var/log/userbot
+$ sudo su mkdir /var/log/userbot
 
 Crear carpeta en `/home/*/` llamada `.userbot`
 
