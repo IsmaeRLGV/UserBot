@@ -13,3 +13,11 @@ $ sudo su mkdir /var/log/userbot
 Crear carpeta en `/home/*/` llamada `.userbot`
 
 $ mkdir /var/log/.userbot
+
+Ejecutar config.py Y:
+  - Crear un usuario de Administrador.
+  - Configurar el Canal y Servidor principal.
+
+Ejecutar userbot.py
+
+Disfrute de UserBot
