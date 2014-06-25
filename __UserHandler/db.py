@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import logger
 
@@ -8,7 +7,7 @@ except ImportError as e:
 	import pickle
 	logger.log(e).LogError()
 
-Dir = '/home/'+"canaima"+'/.userbot/'
+Dir = 'DB/DB/'
 
 def save(filename, content, m_str="w"):
 	logger.log("ROUTE: " + Dir + filename + ".db" ).Logger()
