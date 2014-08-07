@@ -15,9 +15,9 @@ def login(username, hostname, password):
                 VG.db_users[index]['status'] = 'conectado'
                 VG.db_users[index]['hostname'] = hostname
                 db.save('DB_Users', VG.db_users)
-                logger.log('Usuario logeado a: ' + username).Logger()
+                logger.log('Usuario logeado a: '+username).Logger()
             else:
-                raise UnboundLocalError(username + '. Ya se enuentra conectado.')
+                raise UnboundLocalError(username + '. Ya se encuentra conectado.')
         else:
             raise ValueError(username + '. Contraseña erronea.')
 
@@ -25,21 +25,20 @@ def login(username, hostname, password):
         logger.log(e).LogError()
         return e
 
-
 def logout(username, hostname):
-    try:
-        if userinfo.info(username, 'hostname') == hostname:
-            if userinfo.info(username, 'status') is 'conectado':
-                index = userinfo.registered(username)[1]
-                VG.db_users[index]['status'] = 'desconectado'
-                VG.db_users[index]['hostname'] = ''
-                db.save('DB_Users', VG.db_users)
-                logger.log('Usuario deslogueado: ' + username).Logger()
-            else:
-                raise UnboundLocalError(username + '. Ya se enuentra desconectado.')
-        else:
-            raise ValueError(hostname + '. El host no coincide.')
-
-    except (TypeError, ValueError, UnboundLocalError) as e:
-        logger.log(e).LogError()
-        return e
+	try:
+		if userinfo.info(username, 'hostname') == hostname:
+			if userinfo.info(username, 'status') is 'conectado':
+				index = userinfo.registered(username)[1]
+				VG.db_users[index]['status'] = 'desconectado'
+				VG.db_users[index]['hostname'] = ''
+				db.save('DB_Users', VG.db_users)
+				logger.log('Usuario deslogueado: ' + username).Logger()
+			else:
+				raise UnboundLocalError(username + '. Ya se enuentra desconectado.')
+		else:
+			raise ValueError(hostname + '. El host no coincide.')
+					
+	except (TypeError, ValueError, UnboundLocalError) as e:
+		logger.log(e).LogError()
+		return e
