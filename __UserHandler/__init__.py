@@ -2,13 +2,14 @@
 
 import VG
 import flags
+import admin
 from logger import log
 import register
 import threading
 import IRC.client
 import SessionHandler
 
-from commands.newCommand__ import *
+from commands.newCommand import (newCommand, ThisCommand, ifOK)
 
 registro = newCommand('register|registro',
     'Registra un Usuario o un Canal.',
@@ -37,10 +38,11 @@ class MainLoop(threading.Thread):
             sc = self.SocketObject.get()
             Client = IRC.client.cliente(sc)
             args = self.Out_Queue.get().split()
+            #print '__UserHandler -> ' + ' '.join(args[1:])
             data = args[0].replace('!', ' ').replace('@', ' ').split()
             try:
                 if ThisCommand(registro, args[1]):
-                    if data[1] == VG.nick:
+                    if data[1] == VG.IC['NICK']:
                         if register.RegisterUser(data[0], data[2], args[2]):
                             Client.notice(data[0],
                             "Nick(%s) registrado de forma exitosa." % data[0])
@@ -83,10 +85,11 @@ class MainLoop(threading.Thread):
                             Client.notice(data[0], '%s: %s(+%s)' % (data[1],
                             args[2], ''.join(flags.Flags(args[2], data[1],
                             args[3]).FlagsList())))
+
             except IndexError:
                 Client.notice(data[0], "\00304ERROR\3: Faltan parametros")
             #except:
-                #Client.notice(data[1],
-                #"\2\00304ERROR FATAL\3\2: Sistema de Usuarios")
+             #   Client.notice(data[1],
+             #   "\2\00304ERROR FATAL\3\2: Sistema de Usuarios")
         log('El manejador de usuarios a finalizado').LogError()
 
