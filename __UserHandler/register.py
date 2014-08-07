@@ -6,8 +6,7 @@ import logger
 import db
 import re
 
-from userinfo import registered
-from userinfo import info
+from userinfo import (registered, info)
 
 
 def RegisterUser(username, hostname, password):
@@ -35,6 +34,7 @@ def RegisterChannel(username, channel):
         for j in VG.db_flags.keys():
             if j.match(channel):
                 raise StopIteration('El canal(%s) ya se encuentra registrado.' % channel)
+        Ch = channel
     except StopIteration as e:
         logger.log(e).LogError()
         return e
@@ -52,15 +52,11 @@ def RegisterChannel(username, channel):
             VG.ABW[channel] = 'off'
             VG.Google[channel] = 'on'
             VG.UrlOpen[channel] = 'on'
-            VG.Part[channel] = 'on'
-            VG.Join[channel] = 'on'
-            VG.Kick[channel] = 'on'
-            VG.Op[channel] = 'on'
-            VG.Ban[channel] = 'on'
-            VG.Voice[channel] = 'on'
-            VG.ChMode[channel] = 'on'
-            VG.MGame[channel] = 'on'
             db.save('flagsdata', VG.db_flags)
+            VG.CHANNELS += Ch + ','
+            sc = file('DB/CONFIG/CHANNELS', 'w')
+            sc.write('"""{0}"""'.format(VG.CHANNELS))
+            sc.close()
             return True
         else:
             return 'No estas registrado.'
