@@ -3,21 +3,23 @@ UserBot
 
 IRCBot modular hecho en python (Aun en desarrollo).
 
-Instalación
-===========
+Requisitos
+==========
 
-Crear carpeta en `/var/log` llamada `userbot`.
+Se requieren de los siguientes paquetes:
+  - wikipedia
+  - BeautifulSoup
+  - simplejson
 
-$ sudo su mkdir /var/log/userbot
+`sudo pip install wikipedia BeautifulSoup simplejson`
 
-Crear carpeta en `/home/*/` llamada `.userbot`
+Usando UserBot
+==============
 
-$ mkdir /var/log/.userbot
-
-Ejecutar config.py Y:
-  - Crear un usuario de Administrador.
-  - Configurar el Canal y Servidor principal.
-
-Ejecutar userbot.py
-
-Disfrute de UserBot
+ [1] Crear un archivo de nombre `SC` en `DB/CONFIG`.
+ [2] Editar el archivo creado y mantener la siguiente sintaxis:
+      - [('server', port, SASL-USE)]
+      - [('irc.freenode.net', 6667, False)]
+ [3] Lanzar Config.py y siga las instrucciones.
+      `python Config.py`
+ [4] Disfrute de UserBot
