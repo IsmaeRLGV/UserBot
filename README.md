@@ -21,5 +21,5 @@ Usando UserBot
       - [('server', port, SASL-USE)]
       - [('irc.freenode.net', 6667, False)]
 - [3] Lanzar Config.py y siga las instrucciones.
-      `python Config.py`
+      - `python Config.py`
 - [4] Disfrute de UserBot
