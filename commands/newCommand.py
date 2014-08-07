@@ -9,10 +9,10 @@ from IRC.client import cliente
 CommandList = []
 
 
-def newCommand(CommandName, Descripcion='', Sintax=''):
-    Sintax = ' \2\00301Sintax:\3 %s%s' % (VG.Config['COMD'], Sintax)
-    a = [re.compile(r'\%s(%s)' % (VG.Config['COMD'], CommandName)), CommandName,
-        Descripcion + Sintax]
+def newCommand(CommandName, Descripcion='', Sintax='No disponible'):
+    Sintax = ' \2\00301Sintax:\3 %s%s' % (VG.comd, Sintax)
+    a = [re.compile(r'\%s(%s)' % (VG.comd, CommandName)),
+        CommandName.replace('|', ' ').split()[0], Descripcion + Sintax]
     CommandList.append(a)
     a = CommandList.index(a)
     return a
