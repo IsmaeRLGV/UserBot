@@ -3,7 +3,6 @@
 import time
 import logger
 
-
 class cliente:
     def __init__(self, Param00):
         self.s =  Param00
