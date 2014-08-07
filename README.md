@@ -10,8 +10,9 @@ Se requieren de los siguientes paquetes:
   - wikipedia
   - BeautifulSoup
   - simplejson
+  - tweepy
 
-`sudo pip install wikipedia BeautifulSoup simplejson`
+`sudo pip install wikipedia BeautifulSoup simplejson tweepy`
 
 Usando UserBot
 ==============
